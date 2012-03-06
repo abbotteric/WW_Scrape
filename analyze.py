@@ -19,8 +19,8 @@ while (line):
 	answers = np.vstack((answers,[a]))
 	line = f.readline()
 
-A = array
-Y = answers
+A = array[1:,:]
+Y = answers[1:,:]
 
 print A
 
