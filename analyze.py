@@ -6,6 +6,6 @@ print type(x)
 
 print x[1,:]
 
-x[2,:] = [7,8,9]
+x = np.vstack((x,[7,8,9]))
 
 print x[2,:]
