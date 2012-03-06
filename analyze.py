@@ -14,7 +14,6 @@ while (line):
 	y = int(m.group(3))
 	z = int(m.group(4))
 	a = int(m.group(5))
-	print m.group(0)
 	array = np.vstack((array,[w,x,y,z,w*w,x*x,y*y,z*z]))	
 	answers = np.vstack((answers,[a]))
 	line = f.readline()
@@ -22,12 +21,13 @@ while (line):
 A = array[1:,:]
 Y = answers[1:,:]
 
-print A
-
 temp = np.dot(A.transpose(),A)
 inv = np.linalg.inv(temp)
 
 temp = np.dot(A.transpose(),Y)
 ans = np.dot(inv,temp)
 
-print 'pp = '+str(ans[0,0])+'*fat + '+str(ans[1,0])+'*carbs + '+str(ans[2,0])+'*protein + '+str(ans[3,0])+'*fiber'
+if(len(sys.argv) > 1):
+	print 'pp = '+str(ans[0,0])+'*fat + '+str(ans[1,0])+'*carbs + '+str(ans[2,0])+'*protein + '+str(ans[3,0])+'*fiber +'+str(ans[4,0])+'*fat^2 + '+str(ans[5,0])+'*carbs^2 + '+str(ans[6,0])+'*protein^2 + '+str(ans[7,0])+'*fiber^2'
+else:
+	print 'pp = '+str(ans[0,0])+'*fat + '+str(ans[1,0])+'*carbs + '+str(ans[2,0])+'*protein + '+str(ans[3,0])+'*fiber'
